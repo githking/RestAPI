@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row justify-content-center">
+        <div class="col-lg-12" style="background-color:red;">
+        <h1><center>ARE YOU BORED?</center></h1>
+        </div>
+        <div class ="col-sm-12"style ="border:2px solid red;">
+        <h2 class ="activity"></h2>
+        </div>
+        <div class ="col-sm-6"style ="border:2px solid blue;">
+        <h3 class ="type"></h3>
+        </div>
+        <div class ="col-sm-6"style ="border:2px solid red;">
+        <h4 class ="participants"></h4>
+        </div>
+        <div class ="col-sm-6"style ="border:2px solid blue;">
+        <h5 class ="price"></h5>
+        </div>
+        <div class ="col-sm-6"style ="border:2px solid blue;">
+        <h6 class ="accessibility"></h6>
+        </div>
+        </div>
+    </div>
+    
+    
+
+    <script>
+        fetch("https://www.boredapi.com/api/activity")
+        .then(response => {
+            if(!response.ok){
+                throw new Error("Something went Wrong"+ response.statusText)
+            }return response.json()
+        })
+        .then(display => {
+            console.log(display)
+            document.querySelector(".activity").innerHTML = "Activity: " + display.activity
+            document.querySelector(".type").innerHTML = "Type: " + display.type
+            document.querySelector(".participants").innerHTML = "Particpants: " + display.participants
+            document.querySelector(".price").innerHTML = "Price: " + display.price
+            document.querySelector(".accessibility").innerHTML = "Accessibility: " + display.accessibility
+
+
+        })
+
+
+    </script>
+    
+</body>
+</html>
